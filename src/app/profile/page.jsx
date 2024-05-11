@@ -1,7 +1,7 @@
 'use client'
 import { useQueries } from '@tanstack/react-query'
 import axios from 'axios'
-import styles from './page.module.scss'
+import styles from './paje.module.scss'
 
 export default function ProfilePage() {
 
@@ -56,8 +56,7 @@ export default function ProfilePage() {
                         <th>Email</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
-                        <th>Position</th>
-                        <th>Department</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -87,26 +86,6 @@ export default function ProfilePage() {
                             <ul>
                                 {results[0].data.data.data.map(education => (
                                     <li key={education.id}>{education.lastname}</li>
-                                ))}
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                {results[0].data.data.data.map(user => (
-                                    <li key={user.positionId}>
-                                        {(results[1].data.data.data.find(position => position.id === user.positionId))?.name}
-                                    </li>
-                                ))}
-                            </ul>
-                        </td>
-                        <td>
-
-                            <ul>
-                                {results[0].data.data.data.map(user => (
-                                    <li key={user.positionId}>
-                                        {(results[2].data.data.data.find(department => department.id ===
-                                            (results[1].data.data.data.find(position => position.id === user.positionId))?.departmentId))?.name}
-                                    </li>
                                 ))}
                             </ul>
                         </td>

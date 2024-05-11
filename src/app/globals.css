@@ -68,6 +68,12 @@ a {
   text-decoration: none;
 }
 
+table {
+  display: inline-block;
+  margin-right: 40px;
+  margin-top: 40px;
+  margin-left: 40px;
+}
 table,
 tr > * {
   border: 1px solid;

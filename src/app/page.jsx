@@ -45,6 +45,15 @@ export default function Home() {
         }),
         staleTime: Infinity,
       },
+      {
+        queryKey: ['space', 6],
+        queryFn: () => axios.get('http://localhost:9090/space', {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+          },
+        }),
+        staleTime: Infinity,
+      },
     ],
   })
 
@@ -55,6 +64,7 @@ console.log(results);
     console.log('Departments: ', results[1].data.data)
     console.log('Education: ', results[3].data.data)
     console.log('Language: ', results[4].data.data)
+    console.log('Space: ', results[5].data.data)
     return (
         <main className={styles.main}>
 
@@ -89,55 +99,6 @@ console.log(results);
             </tbody>
           </table>
 
-
-
-
-          <table>
-            <caption><h2>Position</h2></caption>
-            <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Salary</th>
-              <th>Department</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <th>
-                <ul>
-                  {results[0].data.data.data.map(position => (
-                      <li key={position.id}>{position.id}</li>
-                  ))}
-                </ul>
-              </th>
-              <td>
-                <ul>
-                  {results[0].data.data.data.map(position => (
-                      <li key={position.id}>{position.name}</li>
-                  ))}
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  {results[0].data.data.data.map(position => (
-                      <li key={position.id}>{position.salary}</li>
-                  ))}
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  {results[0].data.data.data.map(position => (
-                      <li key={position.departmentId}>
-                        {(results[1].data.data.data.find(department => department.id === position.departmentId))?.name}
-                      </li>
-                  ))}
-                </ul>
-
-              </td>
-            </tr>
-            </tbody>
-          </table>
 
 
           <table>
@@ -197,6 +158,100 @@ console.log(results);
             </tbody>
           </table>
 
+
+          <table>
+            <caption><h2>Space</h2></caption>
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Footage</th>
+              <th>Ante</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>
+                <ul>
+                  {results[5].data.data.data.map(space => (
+                      <li key={space.id}>{space.id}</li>
+                  ))}
+                </ul>
+              </th>
+              <td>
+                <ul>
+                  {results[5].data.data.data.map(space => (
+                      <li key={space.id}>{space.name}</li>
+                  ))}
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  {results[5].data.data.data.map(space => (
+                      <li key={space.id}>{space.footage}</li>
+                  ))}
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  {results[5].data.data.data.map(space => (
+                      <li key={space.id}>{space.ante}</li>
+                  ))}
+                </ul>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+
+
+
+          <table>
+            <caption><h2>Position</h2></caption>
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Salary</th>
+              <th>Department</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>
+                <ul>
+                  {results[0].data.data.data.map(position => (
+                      <li key={position.id}>{position.id}</li>
+                  ))}
+                </ul>
+              </th>
+              <td>
+                <ul>
+                  {results[0].data.data.data.map(position => (
+                      <li key={position.id}>{position.name}</li>
+                  ))}
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  {results[0].data.data.data.map(position => (
+                      <li key={position.id}>{position.salary}</li>
+                  ))}
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  {results[0].data.data.data.map(position => (
+                      <li key={position.departmentId}>
+                        {(results[1].data.data.data.find(department => department.id === position.departmentId))?.name}
+                      </li>
+                  ))}
+                </ul>
+
+              </td>
+            </tr>
+            </tbody>
+          </table>
 
 
         </main>

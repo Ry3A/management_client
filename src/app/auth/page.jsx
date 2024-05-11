@@ -11,7 +11,8 @@ export default function AuthPage() {
         mutationFn: ({ email, password }) =>
             axios.post('http://localhost:9090/auth/loginIns', { email, password }),
         onSuccess: data => {
-            localStorage.setItem('jwt', data.data.jwt)
+            localStorage.setItem('jwt', data.data.jwt);
+            localStorage.setItem('user', JSON.stringify(data.data.user));
         },
     })
 

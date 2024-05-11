@@ -23,11 +23,11 @@ export default function RootLayout({ children }) {
                 <Link className={styles.link} href={'/auth'}>
                     Auth
                 </Link>
-                <Link className={styles.link} href={'/profile'}>
+                {/*<Link className={styles.link} href={'/profile'}>*/}
+                {/*    Profile*/}
+                {/*</Link>*/}
+                <Link className={styles.link} href={'/admin'}>
                     Admin
-                </Link>
-                <Link className={styles.link} href={'/profile'}>
-                    Profile
                 </Link>
             </header>
             {children}
